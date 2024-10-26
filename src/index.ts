@@ -17,9 +17,12 @@ declare global {
 dotenv.config();
 
 const app: Application = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://e-ashwa.netlify.app'], // Allow multiple origins
+  credentials: true, // Allow cookies to be sent with requests
+}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use('/api/user', userRoutes);

@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const product_1 = require("../controller/product");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const router = (0, express_1.Router)();
+router.post("/add-products", authMiddleware_1.authenticateToken, product_1.addProduct);
+router.get("/lead-acid-battery", authMiddleware_1.authenticateToken, product_1.getLeadAcidBatteryStock);
+router.get("/lead-acid-charger", authMiddleware_1.authenticateToken, product_1.getLeadAcidChargerStock);
+router.get("/lithium-ion-battery", authMiddleware_1.authenticateToken, product_1.getLithiumIonBatteryStock);
+router.get("/lithium-ion-charger", authMiddleware_1.authenticateToken, product_1.getLithiumIonChargerStock);
+exports.default = router;
